@@ -67,6 +67,15 @@ public class Person {
     }
 
     public void showInfo() {
-        this.toString();
+        System.out.println(this.toString());
+    }
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birtday='" + birtday + '\'' +
+                ", address='" + address + '\''
+                ;
     }
 }

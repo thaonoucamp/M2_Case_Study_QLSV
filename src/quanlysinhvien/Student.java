@@ -102,12 +102,11 @@ public class Student extends Person{
 
     @Override
     public void showInfo() {
-        super.showInfo();
-        this.toString();
+        System.out.println(this.toString());
         System.out.println("");
     }
 
-    public boolean checkScholarship() { // Check sv duoc hoc bong;
+    public boolean checkScholarship() {      // Check sv duoc hoc bong;
         if (this.getMark() >= 8.0) {
             return true;
         } else {
