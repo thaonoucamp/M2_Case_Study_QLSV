@@ -9,6 +9,8 @@ public class Student extends Person implements Serializable {
     private float mark;
     private String email;
 
+    Scanner sc = new Scanner(System.in);
+
     public Student() {
     }
 
@@ -72,8 +74,6 @@ public class Student extends Person implements Serializable {
     public void inputInfo() {
         super.inputInfo();
 
-        Scanner sc = new Scanner(System.in);
-
         System.out.println("Nhap ma sinh vien: ");         // Check msv chi nhan khi nhap dung dieu kien;
         while (true) {
             String rollNoInput = sc.nextLine();
@@ -123,6 +123,54 @@ public class Student extends Person implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try {
+            File_IO.writeFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editStudent() {
+        System.out.println("Nhap ma sinh vien muon sua ?");
+        String editRollNo = sc.nextLine();
+
+        for (Student std : Test.studentList) {
+            if (std.getRollNo().equals(editRollNo)) {
+                System.out.println("Moi sua thong tin !");
+                inputInfo();
+            }
+        }
+
+        try {
+            File_IO.readFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            File_IO.writeFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeStudent() {
+        System.out.println("Nhap ma sinh vien muon xoa ?");
+        String editRollNo = sc.nextLine();
+
+        for (Student std : Test.studentList) {
+            if (std.getRollNo().equals(editRollNo)) {
+              Test.studentList.remove(std);
+            }
+        }
+
+        try {
+            File_IO.readFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         try {
             File_IO.writeFile();
         } catch (IOException e) {
