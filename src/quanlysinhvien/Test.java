@@ -1,10 +1,12 @@
 package quanlysinhvien;
 
+import java.io.*;
 import java.util.*;
 
 public class Test {
-    public static void main(String[] args) {
-        ArrayList<Student> studentList = new ArrayList<>();
+    public static ArrayList<Student> studentList = new ArrayList<>();
+
+    public static void main(String[] args) throws IOException {
 
         int choice;
         Scanner sc = new Scanner(System.in);
@@ -20,7 +22,7 @@ public class Test {
                     System.out.println("Nhap so luong sinh vien:");
                     n = Integer.parseInt(sc.nextLine());
                     for (int i = 0; i < n; i++) {
-                        System.out.println("Nhap sinh vien thu " + (i+1));
+                        System.out.println("Nhap sinh vien thu " + (i + 1));
                         Student std = new Student();
                         std.inputInfo();
                         studentList.add(std);

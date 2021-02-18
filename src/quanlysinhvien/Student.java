@@ -1,8 +1,10 @@
 package quanlysinhvien;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Student extends Person{
+public class Student extends Person implements Serializable {
     private String rollNo;
     private float mark;
     private String email;
@@ -98,12 +100,34 @@ public class Student extends Person{
                 break;
             }
         }
+
+        try {
+            File_IO.readFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            File_IO.writeFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showInfo() {
         System.out.println(this.toString());
         System.out.println("");
+
+        try {
+            File_IO.readFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            File_IO.writeFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean checkScholarship() {      // Check sv duoc hoc bong;
