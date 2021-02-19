@@ -5,16 +5,19 @@ import java.util.ArrayList;
 
 public class File_IO {
 
-    public static ArrayList<Student> studentList = Test.studentList;
+    public static ArrayList<Student> studentList1 = Test.studentList;
 
     public static void writeFile() throws IOException {
         FileOutputStream out = null;
         ObjectOutputStream objOut = null;
 
         try {
-            out = new FileOutputStream("ManageStudent.dat");
+            out = new FileOutputStream("ManageStudent.txt");
             objOut = new ObjectOutputStream(out);
-            objOut.writeObject(studentList);
+            for (Student s : studentList1) {
+                objOut.writeObject(s);
+            }
+
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -24,15 +27,15 @@ public class File_IO {
         }
     }
 
-    public static void readFile() throws IOException {
+    public static ArrayList<Student> readFile() throws IOException {
         FileInputStream inFileStream = null;
         ObjectInputStream inObjStream = null;
 
         try {
-            inFileStream = new FileInputStream("ManageStudent.dat");
+            inFileStream = new FileInputStream("ManageStudent.txt");
             inObjStream = new ObjectInputStream(inFileStream);
 
-            studentList = (ArrayList<Student>) inObjStream.readObject();
+            studentList1 = (ArrayList<Student>) inObjStream.readObject();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,8 +48,10 @@ public class File_IO {
             }
         }
 
-        for (int i = 0; i < studentList.size(); i++) {
-            studentList.get(i).showInfo();
+        for (int i = 0; i < studentList1.size(); i++) {
+            studentList1.get(i).showInfo();
         }
+        return studentList1;
     }
+
 }

@@ -1,10 +1,12 @@
 package quanlysinhvien;
 
 import java.io.*;
-import java.util.*;1
+import java.util.*;
 
 public class Test {
-    public static ArrayList<Student> studentList = new ArrayList<>();
+    public static ArrayList<Student> studentList  = new ArrayList<>();
+
+    static Student student = new Student();
 
     public static void main(String[] args) throws IOException {
 
@@ -99,11 +101,17 @@ public class Test {
                 case 7:
                     System.out.println("Good bye see again !");
                     break;
+                case 8:
+                    student.editStudent();
+                    break;
+                case 9:
+                    student.removeStudent();
+                    break;
                 default:
-                    System.err.println("Ban chon sai ... Hay chon tu 1 - 7 lua chon toi co...thanks !");
+                    System.err.println("Ban chon sai ... Hay chon tu 1 - 9 lua chon toi co...thanks !");
             }
 
-        } while (choice != 7);
+        } while (choice != 10);
     }
 
     static void showMenu() {
@@ -114,5 +122,7 @@ public class Test {
         System.out.println("5 - Sap xep sinh vien theo A - Z va hien thi lai :");
         System.out.println("6 - Hien thi thong tin sv duoc hoc bong va sap xep theo diem cao - thap :");
         System.out.println("7 - Thoat :");
+        System.out.println("8 - Sua thong tin SV:");
+        System.out.println("9 - Xoa sinh vien: ");
     }
 }

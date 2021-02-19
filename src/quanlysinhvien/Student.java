@@ -9,6 +9,7 @@ public class Student extends Person implements Serializable {
     private float mark;
     private String email;
 
+
     Scanner sc = new Scanner(System.in);
 
     public Student() {
@@ -101,81 +102,93 @@ public class Student extends Person implements Serializable {
             }
         }
 
-        try {
-            File_IO.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            File_IO.writeFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            File_IO.readFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            File_IO.writeFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
     public void showInfo() {
         System.out.println(this.toString());
         System.out.println("");
-
-        try {
-            File_IO.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            File_IO.writeFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//
+//        try {
+//            File_IO.readFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            File_IO.writeFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
-    public void editStudent() {
+    public void editStudent() throws IOException {
+//        Test.studentList = File_IO.readFile();
+        int count = 0;
         System.out.println("Nhap ma sinh vien muon sua ?");
         String editRollNo = sc.nextLine();
 
         for (Student std : Test.studentList) {
             if (std.getRollNo().equals(editRollNo)) {
                 System.out.println("Moi sua thong tin !");
-                inputInfo();
+                std.inputInfo();
+                count++;
             }
         }
-
-        try {
-            File_IO.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (count == 0) {
+            System.err.println("Khong tim thay sinh vien trong danh sach !");
         }
-
-        try {
-            File_IO.writeFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//
+//        try {
+//            File_IO.readFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            File_IO.writeFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void removeStudent() {
+        int count = 0;
         System.out.println("Nhap ma sinh vien muon xoa ?");
-        String editRollNo = sc.nextLine();
+        String removeRollNo = sc.nextLine();
 
         for (Student std : Test.studentList) {
-            if (std.getRollNo().equals(editRollNo)) {
-              Test.studentList.remove(std);
+            if (std.getRollNo().equals(removeRollNo)) {
+                Test.studentList.remove(std);
+                count++;
+                break;
             }
         }
-
-        try {
-            File_IO.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (count == 0) {
+            System.err.println("Khong tim thay sinh vien trong danh sach !");
         }
 
-        try {
-            File_IO.writeFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            File_IO.readFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            File_IO.writeFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public boolean checkScholarship() {      // Check sv duoc hoc bong;
@@ -189,7 +202,7 @@ public class Student extends Person implements Serializable {
     @Override
     public String toString() {
         return "Student{" + super.toString() +
-                "rollNo='" + rollNo + '\'' +
+                ", rollNo='" + rollNo + '\'' +
                 ", mark=" + mark +
                 ", email='" + email + '\'' +
                 '}';
