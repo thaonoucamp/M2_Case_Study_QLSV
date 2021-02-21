@@ -1,14 +1,18 @@
 package myFile;
 
+import creeat.Student;
+import method.ManageStudent;
+
 import java.io.*;
 
 public class File_IO {
-    static File file = null;
+    static ManageStudent manageStudent = new ManageStudent();
+    static final String filePath = "ManageStudent.txt";
     static FileInputStream fileInputStream = null;
     static FileOutputStream fileOutputStream = null;
 
     public static void readFile() throws IOException {
-        file = new File("ManageStudent.txt");
+        File file = new File(filePath);
         if (!file.exists()) {
             file.createNewFile();
         }
@@ -24,10 +28,15 @@ public class File_IO {
     }
 
     public static void writeFile() throws IOException {
-        fileOutputStream = new FileOutputStream(file);
+        File file = new File(filePath);
+        if (!file.exists()) {
+            file.createNewFile();
+        }
 
-        String s = "";
-        fileOutputStream.write(s.getBytes());
+        fileOutputStream = new FileOutputStream(file);
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+        objectOutputStream.writeObject(manageStudent.studentList);
 
         fileOutputStream.close();
     }
