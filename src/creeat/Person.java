@@ -1,4 +1,4 @@
-package quanlysinhvien;
+package creeat;
 
 import java.util.Scanner;
 
@@ -48,26 +48,6 @@ public class Person {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public void inputInfo() {
-        Scanner scan = new Scanner(System.in);
-
-        System.out.println("Nhap ten: ");
-        this.setName(scan.nextLine());
-
-        System.out.println("Nhap gioi tinh: ");
-        this.setGender(scan.nextLine());
-
-        System.out.println("Nhap ngay sinh: ");
-        this.setBirtday(scan.nextLine());
-
-        System.out.println("Nhap dia chi: ");
-        this.setAddress(scan.nextLine());
-    }
-
-    public void showInfo() {
-        System.out.println(this.toString());
     }
 
     @Override
