@@ -3,6 +3,7 @@ package method;
 import creeat.Student;
 import myFile.File_IO;
 
+import javax.management.remote.SubjectDelegationPermission;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,8 +11,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class ManageStudent implements Serializable {
-    public static List<Student> studentList = new ArrayList<>();
+public class ManageStudent implements Serializable{
+    static String filePath = "/Users/thaodangxuan/IdeaProjects/QUAN_LY_SINH_VIEN/src/ManageStudent.dat";
+
+    public static ArrayList<Student> studentList = (ArrayList<Student>) File_IO.readFromFile(filePath) == null ? new ArrayList<>(): (ArrayList<Student>) File_IO.readFromFile(filePath);
+
 
     static Scanner sc = new Scanner(System.in);
 
@@ -59,7 +63,9 @@ public class ManageStudent implements Serializable {
         return newStudent;
     }
 
-    public static void showInfoStudent() {
+    public static void showInfoStudent() throws IOException {
+        File_IO.readFromFile(filePath);
+
         for (int i = 0; i < studentList.size(); i++) {
             System.out.println(studentList.get(i).toString());
         }
@@ -89,15 +95,14 @@ public class ManageStudent implements Serializable {
         for (int i = 0; i < n; i++) {
             System.out.println("Nhap sinh vien thu " + (i + 1));
             Student std = getInputInfoStudent();
-//            std = ManageStudent.getInputInfoStudent();
             studentList.add(std);
         }
 
-        File_IO.writeFile();
+        File_IO.writeObjectToFile(studentList, filePath);
     }
 
     public static void editInfoStudent() throws IOException {
-        File_IO.readFile();
+        File_IO.readFromFile(filePath);
 
         int count = 0;
         System.out.println("Nhap ma sinh vien muon sua ?");
@@ -114,11 +119,11 @@ public class ManageStudent implements Serializable {
             System.err.println("Khong tim thay sinh vien trong danh sach !");
         }
 
-        File_IO.writeFile();
+        File_IO.writeObjectToFile(studentList, filePath);
     }
 
     public static void deleteInfoStudent() throws IOException {
-        File_IO.readFile();
+        File_IO.readFromFile(filePath);
 
         int count = 0;
         System.out.println("Nhap ma sinh vien muon xoa ?");
@@ -135,7 +140,7 @@ public class ManageStudent implements Serializable {
             System.err.println("Khong tim thay sinh vien trong danh sach !");
         }
 
-        File_IO.writeFile();
+        File_IO.writeObjectToFile(studentList, filePath);
     }
 
     public static void checkMarkStudent() {

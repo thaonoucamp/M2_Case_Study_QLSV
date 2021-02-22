@@ -1,8 +1,9 @@
 package creeat;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Person {
+public class Person implements Serializable {
     private String name;
     private String gender;
     private String birtday;

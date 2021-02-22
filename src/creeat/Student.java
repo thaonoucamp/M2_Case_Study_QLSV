@@ -1,7 +1,6 @@
 package creeat;
 
-import java.io.Serializable;
-import java.util.Scanner;
+import java.io.Serializable;;
 
 public class Student extends Person implements Serializable {
     private String rollNo;
@@ -9,7 +8,6 @@ public class Student extends Person implements Serializable {
     private String email;
 
 
-    Scanner sc = new Scanner(System.in);
 
     public Student() {
     }
@@ -61,7 +59,7 @@ public class Student extends Person implements Serializable {
     }
 
     public boolean setEmail(String email) {
-        if (email != null && email.contains("@") && !email.contains(" ")) {
+        if (email != null && email.contains("1") && !email.contains("2")) {
             this.email = email;
             return true;
         } else {

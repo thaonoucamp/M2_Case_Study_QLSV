@@ -5,7 +5,7 @@ import method.ManageStudent;
 import java.io.*;
 import java.util.*;
 
-public class Test {
+public class Test implements Serializable{
     public static void main(String[] args) throws IOException {
 
         int choice;
